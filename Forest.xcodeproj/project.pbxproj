@@ -57,6 +57,74 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F5925C7B2249FAB400D30C32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F5925C7D2249FADC00D30C32 /* Storyboards */,
+				F5DB03862240979D004B4041 /* Info.plist */,
+				F5DB03812240979D004B4041 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F5925C7C2249FABC00D30C32 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F5DB037A2240979C004B4041 /* AppDelegate.swift */,
+				F5925C832249FB1800D30C32 /* APIServices */,
+				F5925C822249FB1300D30C32 /* Extensions */,
+				F5925C812249FB0700D30C32 /* Models */,
+				F5925C802249FB0300D30C32 /* Views */,
+				F5925C7F2249FAF700D30C32 /* ViewControllers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F5925C7D2249FADC00D30C32 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F5DB037E2240979C004B4041 /* Main.storyboard */,
+				F5DB03832240979D004B4041 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F5925C7F2249FAF700D30C32 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5DB037C2240979C004B4041 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F5925C802249FB0300D30C32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5925C812249FB0700D30C32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5925C822249FB1300D30C32 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F5925C832249FB1800D30C32 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
 		F5DB036E2240979C004B4041 = {
 			isa = PBXGroup;
 			children = (
@@ -78,12 +146,8 @@
 		F5DB03792240979C004B4041 /* Forest */ = {
 			isa = PBXGroup;
 			children = (
-				F5DB037A2240979C004B4041 /* AppDelegate.swift */,
-				F5DB037C2240979C004B4041 /* ViewController.swift */,
-				F5DB037E2240979C004B4041 /* Main.storyboard */,
-				F5DB03812240979D004B4041 /* Assets.xcassets */,
-				F5DB03832240979D004B4041 /* LaunchScreen.storyboard */,
-				F5DB03862240979D004B4041 /* Info.plist */,
+				F5925C7C2249FABC00D30C32 /* Sources */,
+				F5925C7B2249FAB400D30C32 /* Resources */,
 			);
 			path = Forest;
 			sourceTree = "<group>";
@@ -364,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JT57WV788F;
-				INFOPLIST_FILE = Forest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Forest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,7 +447,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JT57WV788F;
-				INFOPLIST_FILE = Forest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Forest/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
