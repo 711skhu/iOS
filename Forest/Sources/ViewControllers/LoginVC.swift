@@ -29,6 +29,7 @@ class LoginVC: UIViewController {
         setViewRounded()
         setButtonRounded()
         setViewBorder()
+        setButtonShadow()
     }
     
     // UIView 의 테두리를 설정하는 함수
@@ -43,12 +44,16 @@ class LoginVC: UIViewController {
         pwView.makeRounded(cornerRadius: nil)
     }
     
+    func setButtonShadow() {
+        loginButton.dropShadow(color: UIColor.black, offSet: CGSize(width: 0.0, height: 3.0), opacity: 0.16, radius: 6)
+    }
+    
     // UIButton 의 모서리를 둥글게 설정하는 함수
     func setButtonRounded() {
         loginButton.makeRounded(cornerRadius: nil)
     }
     
-    
+    // Login Btn Action
     @IBAction func loginBtnAction(_ sender: Any) {
         
         self.simpleAlert(title: "로그인 실패", message: "아이디 또는 비밀번호가 틀립니다.")

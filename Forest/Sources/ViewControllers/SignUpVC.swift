@@ -54,6 +54,10 @@ class SignUpVC: UIViewController {
         signUpButton.makeRounded(cornerRadius: nil)
     }
     
+    func setButtonShadow() {
+        signUpButton.dropShadow(color: UIColor.black, offSet: CGSize(width: 0.0, height: 3.0), opacity: 0.16, radius: 6)
+    }
+    
     
     // ID Duplicated Btn Action
     @IBAction func idDuplicatedBtnAction(_ sender: Any) {
