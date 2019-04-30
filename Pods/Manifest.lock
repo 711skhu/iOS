@@ -5,12 +5,14 @@ PODS:
     - ObjectMapper (~> 3.4)
   - Kingfisher (4.10.1)
   - ObjectMapper (3.4.1)
+  - ScrollableDatepicker (2.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
   - Kingfisher
   - ObjectMapper
+  - ScrollableDatepicker (~> 2.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Kingfisher
     - ObjectMapper
+    - ScrollableDatepicker
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  ScrollableDatepicker: 0f14e38bcd3517e6632220af11e47d29e0f982db
 
-PODFILE CHECKSUM: 2824156661e9416cec1de2391728dc04084a7629
+PODFILE CHECKSUM: 6ec45b641547c5ee3b3383e88ec4ad880ee50d0e
 
 COCOAPODS: 1.5.3

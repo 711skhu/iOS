@@ -10,4 +10,5 @@ target 'Forest' do
   pod 'AlamofireObjectMapper'
   pod 'ObjectMapper'
   pod 'Kingfisher'
+  pod 'ScrollableDatepicker', '~> 2.2'
 end

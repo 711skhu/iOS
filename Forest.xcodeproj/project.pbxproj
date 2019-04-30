@@ -17,6 +17,9 @@
 		F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */; };
 		F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C84224A02D600D30C32 /* UIView+Extensions.swift */; };
 		F5925C89224A071D00D30C32 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C88224A071D00D30C32 /* CALayer+Extensions.swift */; };
+		F5CB51AA22772C87004764AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB51A922772C87004764AC /* Main.storyboard */; };
+		F5CB51AE22772CCE004764AC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51AD22772CCE004764AC /* MainVC.swift */; };
+		F5CB51B122772CEA004764AC /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51B022772CEA004764AC /* BuildingVC.swift */; };
 		F5DB037B2240979C004B4041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB037A2240979C004B4041 /* AppDelegate.swift */; };
 		F5DB037D2240979C004B4041 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB037C2240979C004B4041 /* LoginVC.swift */; };
 		F5DB03802240979C004B4041 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DB037E2240979C004B4041 /* Login.storyboard */; };
@@ -37,6 +40,9 @@
 		F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F5925C84224A02D600D30C32 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F5925C88224A071D00D30C32 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
+		F5CB51A922772C87004764AC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F5CB51AD22772CCE004764AC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		F5CB51B022772CEA004764AC /* BuildingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
 		F5DB03772240979C004B4041 /* Forest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5DB037A2240979C004B4041 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5DB037C2240979C004B4041 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 			children = (
 				F5DB03832240979D004B4041 /* LaunchScreen.storyboard */,
 				F5DB037E2240979C004B4041 /* Login.storyboard */,
+				F5CB51A922772C87004764AC /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -136,8 +143,8 @@
 		F5925C7F2249FAF700D30C32 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F5DB037C2240979C004B4041 /* LoginVC.swift */,
-				F549BBF32253119400D50F70 /* SignUpVC.swift */,
+				F5CB51AB22772CB6004764AC /* Login */,
+				F5CB51AC22772CBE004764AC /* Main */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +181,24 @@
 				F51FDFF2225C39D800E4DF5D /* Common */,
 			);
 			path = APIServices;
+			sourceTree = "<group>";
+		};
+		F5CB51AB22772CB6004764AC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F5DB037C2240979C004B4041 /* LoginVC.swift */,
+				F549BBF32253119400D50F70 /* SignUpVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F5CB51AC22772CBE004764AC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB51AD22772CCE004764AC /* MainVC.swift */,
+				F5CB51B022772CEA004764AC /* BuildingVC.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		F5DB036E2240979C004B4041 = {
@@ -266,6 +291,7 @@
 				F5DB03852240979D004B4041 /* LaunchScreen.storyboard in Resources */,
 				F5DB03822240979D004B4041 /* Assets.xcassets in Resources */,
 				F5DB03802240979C004B4041 /* Login.storyboard in Resources */,
+				F5CB51AA22772C87004764AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +311,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ScrollableDatepicker/ScrollableDatepicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -294,6 +321,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableDatepicker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -330,6 +358,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F51FDFF5225C39E800E4DF5D /* APIManager.swift in Sources */,
+				F5CB51B122772CEA004764AC /* BuildingVC.swift in Sources */,
+				F5CB51AE22772CCE004764AC /* MainVC.swift in Sources */,
 				F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */,
 				F5DB037D2240979C004B4041 /* LoginVC.swift in Sources */,
 				F549BBF42253119400D50F70 /* SignUpVC.swift in Sources */,
