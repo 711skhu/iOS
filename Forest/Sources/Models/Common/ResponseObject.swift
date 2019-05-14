@@ -10,13 +10,15 @@ import ObjectMapper
 
 struct ResponseObject<T: Mappable>: Mappable {
     
-    var status: Int?
+    var code: Int?
+    var status: String?
     var message: String?
     var data: T?
     
     init?(map: Map) {}
     
     mutating func mapping(map: Map) {
+        code <- map["code"]
         status <- map["status"]
         message <- map["message"]
         data <- map["data"]

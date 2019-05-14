@@ -13,13 +13,17 @@
 		F51FDFFB225C3A5D00E4DF5D /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51FDFFA225C3A5D00E4DF5D /* NetworkResult.swift */; };
 		F51FDFFF225C3D0200E4DF5D /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51FDFFE225C3D0200E4DF5D /* ResponseObject.swift */; };
 		F51FE001225C3D1900E4DF5D /* ResponseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51FE000225C3D1900E4DF5D /* ResponseArray.swift */; };
+		F52BEED8228133B300A17C26 /* BuildingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52BEED6228133B300A17C26 /* BuildingCell.swift */; };
+		F52BEED9228133B300A17C26 /* BuildingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BEED7228133B300A17C26 /* BuildingCell.xib */; };
 		F549BBF42253119400D50F70 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F549BBF32253119400D50F70 /* SignUpVC.swift */; };
 		F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */; };
+		F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DB228A7BB10037CA35 /* AuthService.swift */; };
+		F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */; };
 		F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C84224A02D600D30C32 /* UIView+Extensions.swift */; };
-		F5925C89224A071D00D30C32 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C88224A071D00D30C32 /* CALayer+Extensions.swift */; };
 		F5CB51AA22772C87004764AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB51A922772C87004764AC /* Main.storyboard */; };
 		F5CB51AE22772CCE004764AC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51AD22772CCE004764AC /* MainVC.swift */; };
 		F5CB51B122772CEA004764AC /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51B022772CEA004764AC /* BuildingVC.swift */; };
+		F5CB51B6227852E9004764AC /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51B5227852E9004764AC /* Building.swift */; };
 		F5DB037B2240979C004B4041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB037A2240979C004B4041 /* AppDelegate.swift */; };
 		F5DB037D2240979C004B4041 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB037C2240979C004B4041 /* LoginVC.swift */; };
 		F5DB03802240979C004B4041 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DB037E2240979C004B4041 /* Login.storyboard */; };
@@ -36,13 +40,17 @@
 		F51FDFFA225C3A5D00E4DF5D /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		F51FDFFE225C3D0200E4DF5D /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		F51FE000225C3D1900E4DF5D /* ResponseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArray.swift; sourceTree = "<group>"; };
+		F52BEED6228133B300A17C26 /* BuildingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingCell.swift; sourceTree = "<group>"; };
+		F52BEED7228133B300A17C26 /* BuildingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildingCell.xib; sourceTree = "<group>"; };
 		F549BBF32253119400D50F70 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		F58628DB228A7BB10037CA35 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		F5925C84224A02D600D30C32 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		F5925C88224A071D00D30C32 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		F5CB51A922772C87004764AC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5CB51AD22772CCE004764AC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F5CB51B022772CEA004764AC /* BuildingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
+		F5CB51B5227852E9004764AC /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		F5DB03772240979C004B4041 /* Forest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5DB037A2240979C004B4041 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5DB037C2240979C004B4041 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -91,11 +99,12 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		F51FDFFC225C3CC600E4DF5D /* Login */ = {
+		F51FDFFC225C3CC600E4DF5D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				F58628DB228A7BB10037CA35 /* AuthService.swift */,
 			);
-			path = Login;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		F51FDFFD225C3CEE00E4DF5D /* Common */ = {
@@ -105,6 +114,22 @@
 				F51FE000225C3D1900E4DF5D /* ResponseArray.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		F535AE9E2281512A00001BCD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F52BEED6228133B300A17C26 /* BuildingCell.swift */,
+				F52BEED7228133B300A17C26 /* BuildingCell.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F58628DA228A7B9A0037CA35 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		F5925C7B2249FAB400D30C32 /* Resources */ = {
@@ -152,6 +177,7 @@
 		F5925C802249FB0300D30C32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F535AE9E2281512A00001BCD /* Main */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +185,8 @@
 		F5925C812249FB0700D30C32 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F58628DA228A7B9A0037CA35 /* Auth */,
+				F5CB51B4227852E1004764AC /* Building */,
 				F51FDFFD225C3CEE00E4DF5D /* Common */,
 			);
 			path = Models;
@@ -168,7 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				F5925C84224A02D600D30C32 /* UIView+Extensions.swift */,
-				F5925C88224A071D00D30C32 /* CALayer+Extensions.swift */,
+				F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */,
 				F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
@@ -177,7 +205,7 @@
 		F5925C832249FB1800D30C32 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				F51FDFFC225C3CC600E4DF5D /* Login */,
+				F51FDFFC225C3CC600E4DF5D /* Auth */,
 				F51FDFF2225C39D800E4DF5D /* Common */,
 			);
 			path = APIServices;
@@ -199,6 +227,14 @@
 				F5CB51B022772CEA004764AC /* BuildingVC.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		F5CB51B4227852E1004764AC /* Building */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB51B5227852E9004764AC /* Building.swift */,
+			);
+			path = Building;
 			sourceTree = "<group>";
 		};
 		F5DB036E2240979C004B4041 = {
@@ -291,6 +327,7 @@
 				F5DB03852240979D004B4041 /* LaunchScreen.storyboard in Resources */,
 				F5DB03822240979D004B4041 /* Assets.xcassets in Resources */,
 				F5DB03802240979C004B4041 /* Login.storyboard in Resources */,
+				F52BEED9228133B300A17C26 /* BuildingCell.xib in Resources */,
 				F5CB51AA22772C87004764AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +349,8 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableDatepicker/ScrollableDatepicker.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -322,6 +361,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableDatepicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -364,11 +405,14 @@
 				F5DB037D2240979C004B4041 /* LoginVC.swift in Sources */,
 				F549BBF42253119400D50F70 /* SignUpVC.swift in Sources */,
 				F51FE001225C3D1900E4DF5D /* ResponseArray.swift in Sources */,
+				F5CB51B6227852E9004764AC /* Building.swift in Sources */,
 				F51FDFF9225C3A2300E4DF5D /* Reqeustable.swift in Sources */,
 				F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */,
+				F52BEED8228133B300A17C26 /* BuildingCell.swift in Sources */,
 				F5DB037B2240979C004B4041 /* AppDelegate.swift in Sources */,
-				F5925C89224A071D00D30C32 /* CALayer+Extensions.swift in Sources */,
+				F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */,
 				F51FDFFF225C3D0200E4DF5D /* ResponseObject.swift in Sources */,
+				F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */,
 				F51FDFFB225C3A5D00E4DF5D /* NetworkResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

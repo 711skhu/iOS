@@ -29,4 +29,51 @@ extension UIViewController {
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    // Set Custom Back Button
+    func setBackBtn(color : UIColor){
+        
+        // 백버튼 이미지 파일 이름에 맞게 변경해주세요.
+        let backBTN = UIBarButtonItem(image: UIImage(named: "backBtn"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.pop))
+        navigationItem.leftBarButtonItem = backBTN
+        navigationItem.leftBarButtonItem?.tintColor = color
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
+    
+    // pop func
+    @objc func pop(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // Optional Binding
+    func gsno(_ value: String?) -> String{
+        guard let value_ = value else {
+            return ""
+        }
+        return value_
+    }//func gsno
+    
+    func gino(_ value: Int?) -> Int{
+        guard let value_ = value else {
+            return 0
+        }
+        return value_
+    }//func gino
+    
+    func gbno(_ value: Bool?) -> Bool{
+        guard let value_ = value else {
+            return false
+        }
+        return value_
+    }//func gbno
+    
+    func gfno(_ value: Float?) -> Float{
+        guard let value_ = value else{
+            return 0
+        }
+        return value_
+    }//func gfno
 }

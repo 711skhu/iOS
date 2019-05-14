@@ -55,7 +55,38 @@ class LoginVC: UIViewController {
     
     // Login Btn Action
     @IBAction func loginBtnAction(_ sender: Any) {
+        /*
+        // 옵셔널 바인딩
+        guard let id = idTextField.text else { return }
+        guard let pw = pwTextField.text else { return }
+        */
         
-        self.simpleAlert(title: "로그인 실패", message: "아이디 또는 비밀번호가 틀립니다.")
+        // 통신을 시도합니다.
+        AuthService.shared.signin(id: "", password: "") {
+            (data) in
+            
+            switch (data.status) {
+            case 201:
+                
+                // UserDefault 에 value, key 순으로 token 을 저장
+                UserDefaults.standard.set(data.data, forKey: "refreshToken")
+                
+                // Storyboard 가 다른 ViewController 로 화면 전환을 하는 코드입니다.
+                // 이동할 뷰가 Navigation Controller 에 연결된 경우엔 그 앞의 NavigationController 를 목적지로 선택합니다.
+//                let dvc = UIStoryboard(name: "Soptoon", bundle: nil).instantiateViewController(withIdentifier: "SoptoonNC") as! UINavigationController
+                
+//                self.present(dvc, animated: true, completion: nil)
+                self.simpleAlert(title: "로그인 성공", message: self.gsno(data.message))
+                
+            case 400:
+                self.simpleAlert(title: "로그인 실패", message: self.gsno(data.message))
+                
+            case 600:
+                self.simpleAlert(title: "로그인 실패", message: self.gsno(data.message))
+                
+            default:
+                break
+            }
+        }
     }
 }

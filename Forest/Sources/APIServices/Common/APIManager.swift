@@ -10,6 +10,6 @@ protocol APIManager {}
 
 extension APIManager {
     static func url(_ path: String) -> String {
-        return "Server URL" + path
+        return "https://dev.mobile.com/" + path
     }
 }

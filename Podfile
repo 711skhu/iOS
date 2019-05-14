@@ -11,4 +11,6 @@ target 'Forest' do
   pod 'ObjectMapper'
   pod 'Kingfisher'
   pod 'ScrollableDatepicker', '~> 2.2'
+  pod 'Then'
+  pod 'SnapKit', '~> 4.0.0'
 end
