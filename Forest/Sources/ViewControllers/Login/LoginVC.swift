@@ -62,14 +62,14 @@ class LoginVC: UIViewController {
         */
         
         // 통신을 시도합니다.
-        AuthService.shared.signin(id: "", password: "") {
+        AuthService.shared.login(username: "shon", password: "test123") {
             (data) in
             
-            switch (data.status) {
+            switch (data.code) {
             case 201:
                 
                 // UserDefault 에 value, key 순으로 token 을 저장
-                UserDefaults.standard.set(data.data, forKey: "refreshToken")
+                UserDefaults.standard.set(data.data?.token, forKey: "Token")
                 
                 // Storyboard 가 다른 ViewController 로 화면 전환을 하는 코드입니다.
                 // 이동할 뷰가 Navigation Controller 에 연결된 경우엔 그 앞의 NavigationController 를 목적지로 선택합니다.

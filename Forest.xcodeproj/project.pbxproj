@@ -19,6 +19,7 @@
 		F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */; };
 		F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DB228A7BB10037CA35 /* AuthService.swift */; };
 		F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */; };
+		F58628E0228A891F0037CA35 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DF228A891F0037CA35 /* Token.swift */; };
 		F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C84224A02D600D30C32 /* UIView+Extensions.swift */; };
 		F5CB51AA22772C87004764AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB51A922772C87004764AC /* Main.storyboard */; };
 		F5CB51AE22772CCE004764AC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51AD22772CCE004764AC /* MainVC.swift */; };
@@ -46,6 +47,7 @@
 		F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F58628DB228A7BB10037CA35 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		F58628DF228A891F0037CA35 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		F5925C84224A02D600D30C32 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F5CB51A922772C87004764AC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5CB51AD22772CCE004764AC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		F58628DA228A7B9A0037CA35 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				F58628DF228A891F0037CA35 /* Token.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */,
 				F51FDFFF225C3D0200E4DF5D /* ResponseObject.swift in Sources */,
 				F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */,
+				F58628E0228A891F0037CA35 /* Token.swift in Sources */,
 				F51FDFFB225C3A5D00E4DF5D /* NetworkResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,7 +574,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-11skhu.Forest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -589,7 +593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-11skhu.Forest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

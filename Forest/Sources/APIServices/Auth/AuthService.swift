@@ -10,20 +10,22 @@ import Alamofire
 
 struct AuthService: APIManager, Requestable {
     
-    typealias NetworkData = ResponseObject
+    typealias NetworkData = ResponseObject<Token>
     static let shared = AuthService()
-    let AuthURL = url("/auth")
+    let AuthURL = url("/student")
     let headers: HTTPHeaders = [
         "Content-Type" : "application/json"
     ]
     
+    // "Authorization" : "Bearer +Token"
+    
     // 로그인 api
-    func signin(id: String, password: String, completion: @escaping (ResponseObject) -> Void) {
+    func login(username: String, password: String, completion: @escaping (ResponseObject<Token>) -> Void) {
         
-        let queryURL = AuthURL + "/signin"
+        let queryURL = AuthURL + "/login"
         
         let body = [
-            "id" : id,
+            "username" : username,
             "password" : password
         ]
         

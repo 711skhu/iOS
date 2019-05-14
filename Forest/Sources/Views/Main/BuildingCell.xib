@@ -36,7 +36,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="143" height="167"/>
             <connections>
-                <outlet property="BuildingImg" destination="xXl-Vn-Mkr" id="owx-qh-SE6"/>
+                <outlet property="buildingImg" destination="xXl-Vn-Mkr" id="Dsh-gp-gZ5"/>
             </connections>
             <point key="canvasLocation" x="-19.565217391304348" y="73.995535714285708"/>
         </collectionViewCell>

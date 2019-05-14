@@ -10,13 +10,13 @@ import UIKit
 
 class BuildingCell: UICollectionViewCell {
 
-    @IBOutlet var BuildingImg: UIImageView!
+    @IBOutlet var buildingImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        BuildingImg.layer.cornerRadius = 12
-        BuildingImg.layer.masksToBounds = true
+        buildingImg.layer.cornerRadius = 12
+        buildingImg.layer.masksToBounds = true
     }
 
 }
