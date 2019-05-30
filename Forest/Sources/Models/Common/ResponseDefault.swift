@@ -1,15 +1,13 @@
 //
-//  ResponseArray.swift
+//  ResponseDefault.swift
 //  Forest
 //
-//  Created by wookeon on 09/04/2019.
+//  Created by wookeon on 30/05/2019.
 //  Copyright © 2019 wookeon. All rights reserved.
 //
 
-struct ResponseArray<T: Codable>: Codable {
-    
+struct ResponseDefault: Codable {
     let code: Int?
     let status: String?
     let message: String?
-    let data: [T]?
 }

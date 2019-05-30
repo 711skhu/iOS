@@ -1,5 +1,5 @@
 //
-//  AuthService.swift
+//  ForestService.swift
 //  Forest
 //
 //  Created by wookeon on 14/05/2019.
@@ -8,18 +8,19 @@
 
 import Alamofire
 
-struct AuthService {
+struct ForestService {
     
-    static let shared = AuthService()
+    static let shared = ForestService()
     let header: HTTPHeaders = [
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "nothing")"
     ]
     
-    // App Login API
-    func appLogin(_ username: String, _ password: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+    // Forest Auth API
+    func forestAuth(_ studentNumber: String, _ password: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         
         let body: Parameters = [
-            "username": username,
+            "studentNumber": studentNumber,
             "password": password
         ]
         
@@ -36,11 +37,13 @@ struct AuthService {
                             case 200:
                                 do {
                                     let decoder = JSONDecoder()
-                                    let result = try decoder.decode(ResponseObject<Token>.self, from: value)
+                                    let result = try decoder.decode(ResponseDefault.self, from: value)
                                     
                                     switch result.code {
                                     case 201:
-                                        completion(.success(result.data?.token))
+                                        completion(.success(result.message))
+                                    case 401:
+                                        completion(.requestErr(result.message))
                                     case 403:
                                         completion(.requestErr(result.message))
                                     case 412:

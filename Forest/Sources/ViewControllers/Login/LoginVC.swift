@@ -55,21 +55,29 @@ class LoginVC: UIViewController {
     
     // Login Btn Action
     @IBAction func loginBtnAction(_ sender: Any) {
+        
+        let startTime = CFAbsoluteTimeGetCurrent()
         /*
         // 옵셔널 바인딩
         guard let id = idTextField.text else { return }
         guard let pw = pwTextField.text else { return }
         */
         
+//        AuthService.shared.login(username: "shon", password: "test123") {
+//            (data) in
+//
+//            UserDefaults.standard.set(data.data?.token, forKey: "Token")
+//        }
+        
         // 통신을 시도합니다.
-        AuthService.shared.login(username: "shon", password: "test123") {
+        ForestService.shared.loginForest(studentNumber: "201334019", password: "lejw2205", startTime: startTime) {
             (data) in
             
             switch (data.code) {
             case 201:
                 
                 // UserDefault 에 value, key 순으로 token 을 저장
-                UserDefaults.standard.set(data.data?.token, forKey: "Token")
+//                UserDefaults.standard.set(data.data?.token, forKey: "Token")
                 
                 // Storyboard 가 다른 ViewController 로 화면 전환을 하는 코드입니다.
                 // 이동할 뷰가 Navigation Controller 에 연결된 경우엔 그 앞의 NavigationController 를 목적지로 선택합니다.

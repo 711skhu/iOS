@@ -6,16 +6,8 @@
 //  Copyright © 2019 wookeon. All rights reserved.
 //
 
-import ObjectMapper
-
-struct Token: Mappable {
+struct Token: Codable {
     
-    var token: String?
-    
-    init?(map: Map) {}
-    
-    mutating func mapping(map: Map) {
-        token <- map["token"]
-    }
+    let token: String?
 }
 

@@ -6,11 +6,7 @@ target 'Forest' do
   use_frameworks!
 
   # Pods for Forest
-  pod 'Alamofire'
-  pod 'AlamofireObjectMapper'
-  pod 'ObjectMapper'
-  pod 'Kingfisher'
+  pod 'Alamofire', '~> 4.8.2'
+  pod 'Kingfisher', '~> 4.10.1'
   pod 'ScrollableDatepicker', '~> 2.2'
-  pod 'Then'
-  pod 'SnapKit', '~> 4.0.0'
 end
