@@ -12,4 +12,6 @@ struct APIConstants {
     static let ForestAuthURL = ForestURL + "/login"
     static let AppURL = BaseURL + "/student"
     static let AppAuthURL = AppURL + "/login"
+    static let RentalListURL = ForestURL + "/rentalList"
+    static let BuildingURL = BaseURL + "/buildings"
 }

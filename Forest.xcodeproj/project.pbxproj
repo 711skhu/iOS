@@ -14,11 +14,14 @@
 		F52BEED8228133B300A17C26 /* BuildingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52BEED6228133B300A17C26 /* BuildingCell.swift */; };
 		F52BEED9228133B300A17C26 /* BuildingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52BEED7228133B300A17C26 /* BuildingCell.xib */; };
 		F549BBF42253119400D50F70 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F549BBF32253119400D50F70 /* SignUpVC.swift */; };
+		F54B39B822A1755400881BF4 /* RentalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39B722A1755400881BF4 /* RentalList.swift */; };
+		F54B39BA22A175A800881BF4 /* RentalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39B922A175A800881BF4 /* RentalDate.swift */; };
+		F54B39BD22A176C700881BF4 /* RentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39BC22A176C700881BF4 /* RentalService.swift */; };
+		F54B39C622A277AD00881BF4 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39C522A277AD00881BF4 /* AuthVC.swift */; };
 		F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */; };
 		F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DB228A7BB10037CA35 /* AuthService.swift */; };
 		F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */; };
 		F58628E0228A891F0037CA35 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DF228A891F0037CA35 /* Token.swift */; };
-		F58628E2228A8CC80037CA35 /* ForestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628E1228A8CC80037CA35 /* ForestService.swift */; };
 		F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C84224A02D600D30C32 /* UIView+Extensions.swift */; };
 		F5CB51AA22772C87004764AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB51A922772C87004764AC /* Main.storyboard */; };
 		F5CB51AE22772CCE004764AC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB51AD22772CCE004764AC /* MainVC.swift */; };
@@ -43,11 +46,14 @@
 		F52BEED6228133B300A17C26 /* BuildingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingCell.swift; sourceTree = "<group>"; };
 		F52BEED7228133B300A17C26 /* BuildingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildingCell.xib; sourceTree = "<group>"; };
 		F549BBF32253119400D50F70 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		F54B39B722A1755400881BF4 /* RentalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalList.swift; sourceTree = "<group>"; };
+		F54B39B922A175A800881BF4 /* RentalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDate.swift; sourceTree = "<group>"; };
+		F54B39BC22A176C700881BF4 /* RentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalService.swift; sourceTree = "<group>"; };
+		F54B39C522A277AD00881BF4 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F58628DB228A7BB10037CA35 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		F58628DF228A891F0037CA35 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		F58628E1228A8CC80037CA35 /* ForestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestService.swift; sourceTree = "<group>"; };
 		F5925C84224A02D600D30C32 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F5CB51A922772C87004764AC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5CB51AD22772CCE004764AC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -106,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				F58628DB228A7BB10037CA35 /* AuthService.swift */,
-				F58628E1228A8CC80037CA35 /* ForestService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -128,6 +133,23 @@
 				F52BEED7228133B300A17C26 /* BuildingCell.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		F54B39B622A1754C00881BF4 /* Rental */ = {
+			isa = PBXGroup;
+			children = (
+				F54B39B722A1755400881BF4 /* RentalList.swift */,
+				F54B39B922A175A800881BF4 /* RentalDate.swift */,
+			);
+			path = Rental;
+			sourceTree = "<group>";
+		};
+		F54B39BB22A176C000881BF4 /* Rental */ = {
+			isa = PBXGroup;
+			children = (
+				F54B39BC22A176C700881BF4 /* RentalService.swift */,
+			);
+			path = Rental;
 			sourceTree = "<group>";
 		};
 		F58628DA228A7B9A0037CA35 /* Auth */ = {
@@ -191,6 +213,7 @@
 		F5925C812249FB0700D30C32 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F54B39B622A1754C00881BF4 /* Rental */,
 				F58628DA228A7B9A0037CA35 /* Auth */,
 				F5CB51B4227852E1004764AC /* Building */,
 				F51FDFFD225C3CEE00E4DF5D /* Common */,
@@ -213,6 +236,7 @@
 			children = (
 				F51FDFFC225C3CC600E4DF5D /* Auth */,
 				F51FDFF2225C39D800E4DF5D /* Common */,
+				F54B39BB22A176C000881BF4 /* Rental */,
 			);
 			path = APIServices;
 			sourceTree = "<group>";
@@ -222,6 +246,7 @@
 			children = (
 				F5DB037C2240979C004B4041 /* LoginVC.swift */,
 				F549BBF32253119400D50F70 /* SignUpVC.swift */,
+				F54B39C522A277AD00881BF4 /* AuthVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -304,6 +329,7 @@
 				TargetAttributes = {
 					F5DB03762240979C004B4041 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -401,9 +427,11 @@
 				F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */,
 				F5DB037D2240979C004B4041 /* LoginVC.swift in Sources */,
 				F549BBF42253119400D50F70 /* SignUpVC.swift in Sources */,
+				F54B39BD22A176C700881BF4 /* RentalService.swift in Sources */,
 				F51FE001225C3D1900E4DF5D /* ResponseArray.swift in Sources */,
 				F5CB51B6227852E9004764AC /* Building.swift in Sources */,
-				F58628E2228A8CC80037CA35 /* ForestService.swift in Sources */,
+				F54B39BA22A175A800881BF4 /* RentalDate.swift in Sources */,
+				F54B39B822A1755400881BF4 /* RentalList.swift in Sources */,
 				F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */,
 				F52BEED8228133B300A17C26 /* BuildingCell.swift in Sources */,
 				F5DB037B2240979C004B4041 /* AppDelegate.swift in Sources */,
@@ -412,6 +440,7 @@
 				F5F25A3D229F568F004C18EC /* APIConstants.swift in Sources */,
 				F5F25A41229F5C53004C18EC /* ResponseDefault.swift in Sources */,
 				F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */,
+				F54B39C622A277AD00881BF4 /* AuthVC.swift in Sources */,
 				F58628E0228A891F0037CA35 /* Token.swift in Sources */,
 				F51FDFFB225C3A5D00E4DF5D /* NetworkResult.swift in Sources */,
 			);
@@ -560,6 +589,7 @@
 			baseConfigurationReference = 37AB27D388DE112131591564 /* Pods-Forest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JT57WV788F;
 				INFOPLIST_FILE = "$(SRCROOT)/Forest/Resources/Info.plist";
@@ -569,6 +599,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-11skhu.Forest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -579,6 +612,7 @@
 			baseConfigurationReference = 27010F7633D9A8BF7CE79559 /* Pods-Forest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JT57WV788F;
 				INFOPLIST_FILE = "$(SRCROOT)/Forest/Resources/Info.plist";
@@ -588,6 +622,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-11skhu.Forest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

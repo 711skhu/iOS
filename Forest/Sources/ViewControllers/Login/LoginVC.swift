@@ -20,16 +20,48 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var logoImageView: UIImageView!
+    // Constraint Outlet
+    @IBOutlet weak var logoLeading: NSLayoutConstraint!
+    @IBOutlet weak var logoTrailing: NSLayoutConstraint!
+    @IBOutlet weak var logoVertical: NSLayoutConstraint!
+    @IBOutlet weak var stackViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var stackViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var stackViewCenterY: NSLayoutConstraint!
+    @IBOutlet weak var labelLeading: NSLayoutConstraint!
+    @IBOutlet weak var labelTrailing: NSLayoutConstraint!
     
-    // ViewDidLoad() -> View 가 Load 된 후에 호출
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setConstraint()
         setViewRounded()
         setButtonRounded()
         setViewBorder()
         setButtonShadow()
+        
+        initGestureRecognizer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
+    }
+    
+    // 작은 화면에 대한 대응
+    func setConstraint() {
+        if self.view.layer.frame.width < 375 {
+            logoLeading.constant = 28
+            logoTrailing.constant = 28
+            stackViewLeading.constant = 28
+            stackViewTrailing.constant = 28
+            labelLeading.constant = 28
+            labelTrailing.constant = 28
+            logoVertical.constant = 24
+        }
     }
     
     // UIView 의 테두리를 설정하는 함수
@@ -56,45 +88,97 @@ class LoginVC: UIViewController {
     // Login Btn Action
     @IBAction func loginBtnAction(_ sender: Any) {
         
-        let startTime = CFAbsoluteTimeGetCurrent()
-        /*
-        // 옵셔널 바인딩
         guard let id = idTextField.text else { return }
         guard let pw = pwTextField.text else { return }
-        */
-        
-//        AuthService.shared.login(username: "shon", password: "test123") {
-//            (data) in
-//
-//            UserDefaults.standard.set(data.data?.token, forKey: "Token")
-//        }
         
         // 통신을 시도합니다.
-        ForestService.shared.loginForest(studentNumber: "201334019", password: "lejw2205", startTime: startTime) {
+        AuthService.shared.appAuth(id, pw) {
             (data) in
             
-            switch (data.code) {
-            case 201:
+            switch data {
+
+            case .success(let token):
+                UserDefaults.standard.set(token, forKey: "Token")
                 
-                // UserDefault 에 value, key 순으로 token 을 저장
-//                UserDefaults.standard.set(data.data?.token, forKey: "Token")
-                
-                // Storyboard 가 다른 ViewController 로 화면 전환을 하는 코드입니다.
-                // 이동할 뷰가 Navigation Controller 에 연결된 경우엔 그 앞의 NavigationController 를 목적지로 선택합니다.
-//                let dvc = UIStoryboard(name: "Soptoon", bundle: nil).instantiateViewController(withIdentifier: "SoptoonNC") as! UINavigationController
-                
-//                self.present(dvc, animated: true, completion: nil)
-                self.simpleAlert(title: "로그인 성공", message: self.gsno(data.message))
-                
-            case 400:
-                self.simpleAlert(title: "로그인 실패", message: self.gsno(data.message))
-                
-            case 600:
-                self.simpleAlert(title: "로그인 실패", message: self.gsno(data.message))
-                
-            default:
-                break
+                let dvc = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as! AuthVC
+                self.present(dvc, animated: true, completion: nil)
+            case .requestErr(let message):
+                self.simpleAlert(title: "로그인 실패", message: message as! String)
+            case .pathErr:
+                print("경로 에러")
+            case .serverErr:
+                self.simpleAlert(title: "로그인 실패", message: "점검 중 입니다.")
+            case .networkFail:
+                self.simpleAlert(title: "로그인 실패", message: "네트워크 상태를 확인해주세요.")
             }
         }
+    }
+}
+
+extension LoginVC: UIGestureRecognizerDelegate {
+    
+    func initGestureRecognizer() {
+        let textFieldTap = UITapGestureRecognizer(target: self, action: #selector(handleTapTextField(_:)))
+        textFieldTap.delegate = self
+        view.addGestureRecognizer(textFieldTap)
+    }
+    
+    @objc func handleTapTextField(_ sender: UITapGestureRecognizer) {
+        self.idTextField.resignFirstResponder()
+        self.pwTextField.resignFirstResponder()
+    }
+    
+    
+    func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: idTextField))! || (touch.view?.isDescendant(of: pwTextField))! {
+            
+            return false
+        }
+        return true
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else { return }
+        
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+    
+        let keyboardHeight: CGFloat
+        
+        if #available(iOS 11.0, *) {
+            keyboardHeight = keyboardFrame.cgRectValue.height - self.view.safeAreaInsets.bottom
+        } else {
+            keyboardHeight = keyboardFrame.cgRectValue.height
+        }
+        
+        UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve), animations: {
+            
+            self.logoImageView.alpha = 0
+            self.stackViewCenterY.constant = -keyboardHeight/2
+        })
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
+        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+        UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve), animations: {
+            self.logoImageView.alpha = 1.0
+            self.stackViewCenterY.constant = 0
+        })
+        
+        self.view.layoutIfNeeded()
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

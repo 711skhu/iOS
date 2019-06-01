@@ -23,6 +23,16 @@ class MainVC: UIViewController {
         buildingCollectionView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        RentalService.shared.getRentalList {
+            (data) in
+            
+            print(data)
+        }
+    }
+    
 }
 
 extension MainVC: UICollectionViewDataSource {

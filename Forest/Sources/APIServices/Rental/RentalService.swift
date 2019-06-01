@@ -1,30 +1,25 @@
 //
-//  ForestService.swift
+//  RentalService.swift
 //  Forest
 //
-//  Created by wookeon on 14/05/2019.
+//  Created by wookeon on 31/05/2019.
 //  Copyright © 2019 wookeon. All rights reserved.
 //
 
 import Alamofire
 
-struct ForestService {
+struct RentalService {
     
-    static let shared = ForestService()
-    let header: HTTPHeaders = [
-        "Content-Type" : "application/json",
-        "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "nothing")"
-    ]
+    static let shared = RentalService()
     
-    // Forest Auth API
-    func forestAuth(_ studentNumber: String, _ password: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+    // Rental List API
+    func getRentalList(completion: @escaping (NetworkResult<Any>) -> Void) {
         
-        let body: Parameters = [
-            "studentNumber": studentNumber,
-            "password": password
+        let header: HTTPHeaders = [
+            "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "")"
         ]
         
-        Alamofire.request(APIConstants.AppAuthURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
+        Alamofire.request(APIConstants.RentalListURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
             .responseData { response in
                 
                 switch response.result {
@@ -37,16 +32,14 @@ struct ForestService {
                             case 200:
                                 do {
                                     let decoder = JSONDecoder()
-                                    let result = try decoder.decode(ResponseDefault.self, from: value)
+                                    let result = try decoder.decode(ResponseArray<RentalList>.self, from: value)
                                     
                                     switch result.code {
                                     case 201:
-                                        completion(.success(result.message))
+                                        completion(.success([result.data]))
                                     case 401:
                                         completion(.requestErr(result.message))
                                     case 403:
-                                        completion(.requestErr(result.message))
-                                    case 412:
                                         completion(.requestErr(result.message))
                                     default:
                                         completion(.pathErr)
