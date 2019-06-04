@@ -41,11 +41,11 @@ struct AuthService {
                                     
                                     switch result.code {
                                     case 201:
-                                        completion(.success(result.data?.token))
+                                        completion(.success(result.data?.token as Any))
                                     case 403:
-                                        completion(.requestErr(result.message))
+                                        completion(.requestErr(result.message!))
                                     case 412:
-                                        completion(.requestErr(result.message))
+                                        completion(.requestErr(result.message!))
                                     default:
                                         completion(.pathErr)
                                     }
@@ -85,7 +85,7 @@ struct AuthService {
             "password": password
         ]
         
-        Alamofire.request(APIConstants.AppAuthURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
+        Alamofire.request(APIConstants.ForestAuthURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
             .responseData { response in
                 
                 switch response.result {
@@ -102,13 +102,13 @@ struct AuthService {
                                     
                                     switch result.code {
                                     case 201:
-                                        completion(.success(result.message))
-                                    case 401:
-                                        completion(.requestErr(result.message))
-                                    case 403:
-                                        completion(.requestErr(result.message))
-                                    case 412:
-                                        completion(.requestErr(result.message))
+                                        completion(.success(result.message!))
+                                    case 400:
+                                        completion(.requestErr(result.message!))
+                                    case 404:
+                                        completion(.requestErr(result.message!))
+                                    case 500:
+                                        completion(.pathErr)
                                     default:
                                         completion(.pathErr)
                                     }

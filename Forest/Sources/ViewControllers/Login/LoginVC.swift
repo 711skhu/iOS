@@ -41,6 +41,19 @@ class LoginVC: UIViewController {
         setButtonShadow()
         
         initGestureRecognizer()
+        
+        autoLogin()
+    }
+    
+    func autoLogin() {
+        
+        guard UserDefaults.standard.string(forKey: "Id") != nil else { return }
+        guard UserDefaults.standard.string(forKey: "Password") != nil else { return }
+        guard UserDefaults.standard.string(forKey: "Token") != nil else { return }
+        guard UserDefaults.standard.string(forKey: "StudentNumber") != nil else { return }
+        guard UserDefaults.standard.string(forKey: "StudentNumberPassword") != nil else { return }
+        
+        login()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,9 +98,7 @@ class LoginVC: UIViewController {
         loginButton.makeRounded(cornerRadius: nil)
     }
     
-    // Login Btn Action
-    @IBAction func loginBtnAction(_ sender: Any) {
-        
+    func login() {
         guard let id = idTextField.text else { return }
         guard let pw = pwTextField.text else { return }
         
@@ -96,22 +107,37 @@ class LoginVC: UIViewController {
             (data) in
             
             switch data {
-
+                
             case .success(let token):
                 UserDefaults.standard.set(token, forKey: "Token")
+                UserDefaults.standard.set(id, forKey: "Id")
+                UserDefaults.standard.set(pw, forKey: "Password")
                 
-                let dvc = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as! AuthVC
-                self.present(dvc, animated: true, completion: nil)
+                if UserDefaults.standard.string(forKey : "StudentNumber") != nil && UserDefaults.standard.string(forKey : "StudentNumberPassword") != nil {
+                    let dvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNC") as! UINavigationController
+                    
+                    self.present(dvc, animated: true)
+                } else {
+                    let dvc = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as! AuthVC
+                    
+                    self.present(dvc, animated: true)
+                }
+                
             case .requestErr(let message):
                 self.simpleAlert(title: "로그인 실패", message: message as! String)
             case .pathErr:
-                print("경로 에러")
+                self.simpleAlert(title: "로그인 실패", message: "잘못된 접근입니다.")
             case .serverErr:
                 self.simpleAlert(title: "로그인 실패", message: "점검 중 입니다.")
             case .networkFail:
                 self.simpleAlert(title: "로그인 실패", message: "네트워크 상태를 확인해주세요.")
             }
         }
+    }
+    
+    // Login Btn Action
+    @IBAction func loginBtnAction(_ sender: Any) {
+        login()
     }
 }
 

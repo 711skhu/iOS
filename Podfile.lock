@@ -1,24 +1,24 @@
 PODS:
   - Alamofire (4.8.2)
   - Kingfisher (4.10.1)
-  - ScrollableDatepicker (2.2.0)
+  - SideMenu (5.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.2)
   - Kingfisher (~> 4.10.1)
-  - ScrollableDatepicker (~> 2.2)
+  - SideMenu
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Kingfisher
-    - ScrollableDatepicker
+    - SideMenu
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  ScrollableDatepicker: 0f14e38bcd3517e6632220af11e47d29e0f982db
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
 
-PODFILE CHECKSUM: 2400efd2ea4e37db90755f148620f14a1591e6d5
+PODFILE CHECKSUM: fda1e2100c67d280b6ce0729d815f79528311a59
 
 COCOAPODS: 1.5.3
