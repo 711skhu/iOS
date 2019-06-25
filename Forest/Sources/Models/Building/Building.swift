@@ -7,14 +7,15 @@
 //
 
 import Foundation
-import UIKit
 
 struct Building {
-    var buildingImg: UIImage?
-    var buildingName: String
+    var _title: String
+    var _context: String
+    var _buildingNumber: Int
     
-    init(buildingName: String, imgName: String) {
-        self.buildingImg = UIImage(named: imgName)
-        self.buildingName = buildingName
+    init(title: String, context: String, buildingNumber: Int) {
+        self._title = title
+        self._context = context
+        self._buildingNumber = buildingNumber
     }
 }

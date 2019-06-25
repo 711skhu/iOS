@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 // AuthViewController
-class AuthVC: UIViewController {
-    
+class AuthVC: UIViewController, NVActivityIndicatorViewable {
+
     // Interface Builder Outlet
     @IBOutlet weak var studentNumberView: UIView!
     @IBOutlet weak var pwView: UIView!
@@ -85,24 +86,46 @@ class AuthVC: UIViewController {
         authButton.makeRounded(cornerRadius: nil)
     }
     
+    // Activity Indicator 를 띄운다.
+    func setActivityIndicator() {
+        self.view.endEditing(true)
+        
+        let size = CGSize(width: 30, height: 30)
+        
+        startAnimating(size, message: "서버에 요청 중...", type: .ballSpinFadeLoader, fadeInAnimation: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            NVActivityIndicatorPresenter.sharedInstance.setMessage("인증 중...")
+        }
+    }
+    
+    // Activity Indicator 를 제거한다.
+    func removeActivityIndicator() {
+        self.stopAnimating(nil)
+    }
+    
     // Login Btn Action
     @IBAction func authBtnAction(_ sender: Any) {
         
         guard let studentNumber = studentNumberTextField.text else { return }
         guard let pw = pwTextField.text else { return }
         
+        setActivityIndicator()
+        
         // 통신을 시도합니다.
         AuthService.shared.forestAuth(studentNumber, pw) {
+            [weak self]
             (data) in
+            
+            guard let `self` = self else { return }
             
             switch data {
                 
-            case .success(let message):
+            case .success(_):
                 UserDefaults.standard.set(studentNumber, forKey: "StudentNumber")
-                UserDefaults.standard.set(pw, forKey: "StudentNumberPassword")
+                UserDefaults.standard.set(pw, forKey: "ForestPassword")
                 
-                self.simpleAlert(title: "인증 성공", message: message as! String)
-                
+            
                 let dvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNC") as! UINavigationController
                 
                 self.present(dvc, animated: true)
@@ -116,6 +139,8 @@ class AuthVC: UIViewController {
             case .networkFail:
                 self.simpleAlert(title: "로그인 실패", message: "네트워크 상태를 확인해주세요.")
             }
+            
+            self.removeActivityIndicator()
         }
     }
 }

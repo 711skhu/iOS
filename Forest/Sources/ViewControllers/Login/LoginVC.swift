@@ -11,7 +11,11 @@ import UIKit
     // LoginViewController
 class LoginVC: UIViewController {
 
+    
+    
     // Interface Builder Outlet
+    @IBOutlet weak var logoImageView: UIImageView!
+    
     @IBOutlet weak var idView: UIView!
     @IBOutlet weak var pwView: UIView!
     
@@ -20,7 +24,6 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    @IBOutlet weak var logoImageView: UIImageView!
     // Constraint Outlet
     @IBOutlet weak var logoLeading: NSLayoutConstraint!
     @IBOutlet weak var logoTrailing: NSLayoutConstraint!
@@ -41,19 +44,6 @@ class LoginVC: UIViewController {
         setButtonShadow()
         
         initGestureRecognizer()
-        
-        autoLogin()
-    }
-    
-    func autoLogin() {
-        
-        guard UserDefaults.standard.string(forKey: "Id") != nil else { return }
-        guard UserDefaults.standard.string(forKey: "Password") != nil else { return }
-        guard UserDefaults.standard.string(forKey: "Token") != nil else { return }
-        guard UserDefaults.standard.string(forKey: "StudentNumber") != nil else { return }
-        guard UserDefaults.standard.string(forKey: "StudentNumberPassword") != nil else { return }
-        
-        login()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +79,7 @@ class LoginVC: UIViewController {
         pwView.makeRounded(cornerRadius: nil)
     }
     
+    // UIButton 에 그림자를 설정하는 함수
     func setButtonShadow() {
         loginButton.dropShadow(color: UIColor.black, offSet: CGSize(width: 0.0, height: 3.0), opacity: 0.16, radius: 6)
     }
@@ -98,30 +89,27 @@ class LoginVC: UIViewController {
         loginButton.makeRounded(cornerRadius: nil)
     }
     
+    // 로그인
     func login() {
         guard let id = idTextField.text else { return }
         guard let pw = pwTextField.text else { return }
         
-        // 통신을 시도합니다.
+        // Core 로그인 API 호출
         AuthService.shared.appAuth(id, pw) {
             (data) in
             
             switch data {
                 
-            case .success(let token):
-                UserDefaults.standard.set(token, forKey: "Token")
-                UserDefaults.standard.set(id, forKey: "Id")
+            case .success(let result):
+                let _result: Token = result as! Token
+                UserDefaults.standard.set(_result.token, forKey: "Token")
+                UserDefaults.standard.set(_result.refreshToken, forKey: "RefreshToken")
+                UserDefaults.standard.set(id, forKey: "Username")
                 UserDefaults.standard.set(pw, forKey: "Password")
                 
-                if UserDefaults.standard.string(forKey : "StudentNumber") != nil && UserDefaults.standard.string(forKey : "StudentNumberPassword") != nil {
-                    let dvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNC") as! UINavigationController
-                    
-                    self.present(dvc, animated: true)
-                } else {
-                    let dvc = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as! AuthVC
-                    
-                    self.present(dvc, animated: true)
-                }
+                let dvc = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as! AuthVC
+        
+                self.present(dvc, animated: true)
                 
             case .requestErr(let message):
                 self.simpleAlert(title: "로그인 실패", message: message as! String)
@@ -141,6 +129,7 @@ class LoginVC: UIViewController {
     }
 }
 
+// GestureRecognizer Delegate
 extension LoginVC: UIGestureRecognizerDelegate {
     
     func initGestureRecognizer() {
@@ -148,6 +137,7 @@ extension LoginVC: UIGestureRecognizerDelegate {
         textFieldTap.delegate = self
         view.addGestureRecognizer(textFieldTap)
     }
+    
     
     @objc func handleTapTextField(_ sender: UITapGestureRecognizer) {
         self.idTextField.resignFirstResponder()

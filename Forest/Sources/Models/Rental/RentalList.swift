@@ -11,5 +11,5 @@ struct RentalList: Codable {
     let rentalDate: RentalDate
     let rentalState: String
     let lectureCode: String
-    let cancle: Bool
+    let cancle: Bool?
 }

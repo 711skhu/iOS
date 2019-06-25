@@ -24,7 +24,7 @@ struct AuthService {
             "password": password
         ]
         
-        Alamofire.request(APIConstants.AppAuthURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
+        Alamofire.request(APIConstants.AppLoginURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
             .responseData { response in
                 
                 switch response.result {
@@ -41,10 +41,10 @@ struct AuthService {
                                     
                                     switch result.code {
                                     case 201:
-                                        completion(.success(result.data?.token as Any))
-                                    case 403:
+                                        completion(.success(result.data as Any))
+                                    case 401:
                                         completion(.requestErr(result.message!))
-                                    case 412:
+                                    case 404:
                                         completion(.requestErr(result.message!))
                                     default:
                                         completion(.pathErr)
@@ -85,7 +85,7 @@ struct AuthService {
             "password": password
         ]
         
-        Alamofire.request(APIConstants.ForestAuthURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
+        Alamofire.request(APIConstants.ForestLoginURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
             .responseData { response in
                 
                 switch response.result {
@@ -93,6 +93,7 @@ struct AuthService {
                 case .success:
                     if let value = response.result.value {
                         if let status = response.response?.statusCode {
+                            
                             
                             switch status {
                             case 200:
@@ -109,6 +110,61 @@ struct AuthService {
                                         completion(.requestErr(result.message!))
                                     case 500:
                                         completion(.pathErr)
+                                    default:
+                                        completion(.pathErr)
+                                    }
+                                } catch {
+                                    completion(.pathErr)
+                                }
+                            case 400:
+                                completion(.pathErr)
+                            case 500:
+                                completion(.serverErr)
+                                
+                            default:
+                                break
+                            }
+                        }
+                    }
+                    break
+                    
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    completion(.networkFail)
+                    break
+                }
+        }
+    }
+    
+    // Student Info API
+    func getStudentInfo(completion: @escaping (NetworkResult<Any>) -> Void) {
+        
+        let header: HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "")"
+        ]
+        
+        Alamofire.request(APIConstants.StudentInfoURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
+            .responseData { response in
+                
+                switch response.result {
+                    
+                case .success:
+                    if let value = response.result.value {
+                        if let status = response.response?.statusCode {
+                            
+                            
+                            switch status {
+                            case 200:
+                                do {
+                                    let decoder = JSONDecoder()
+                                    let result = try decoder.decode(ResponseObject<StudentInfo>.self, from: value)
+                                    
+                                    switch result.code {
+                                    case 200:
+                                        completion(.success(result.data!))
+                                    case 404:
+                                        completion(.requestErr(result.message!))
                                     default:
                                         completion(.pathErr)
                                     }

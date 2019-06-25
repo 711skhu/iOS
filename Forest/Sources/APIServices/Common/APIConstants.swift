@@ -7,11 +7,19 @@
 //
 
 struct APIConstants {
+    // App
     static let BaseURL = "https://dev.mobile.shouwn.com"
-    static let ForestURL = BaseURL + "/user"
-    static let ForestAuthURL = ForestURL + "/login"
     static let AppURL = BaseURL + "/student"
-    static let AppAuthURL = AppURL + "/login"
+    static let AuthURL = AppURL + "/auth"
+    static let SignUpURL = AuthURL + "/signUp"
+    static let AppLoginURL = AuthURL + "/login"
+    static let RefreshURL = AuthURL + "/token"
+    
+    
+    // Forest
+    static let StudentInfoURL = BaseURL + "/students/own"
+    static let ForestURL = BaseURL + "/user"
+    static let ForestLoginURL = ForestURL + "/login"
     static let RentalListURL = ForestURL + "/rentalList"
-    static let BuildingURL = BaseURL + "/buildings"
+    static let RequestRentalURL = BaseURL + "/requestRental"
 }

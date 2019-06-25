@@ -7,7 +7,7 @@
 //
 
 struct Token: Codable {
-    
     let token: String?
+    let refreshToken: String?
 }
 

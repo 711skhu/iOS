@@ -7,6 +7,7 @@ target 'Forest' do
 
   # Pods for Forest
   pod 'Alamofire', '~> 4.8.2'
-  pod 'Kingfisher', '~> 4.10.1'
   pod 'SideMenu'
+  pod 'ScrollableDatepicker', '~> 2.2'
+  pod 'NVActivityIndicatorView', '~> 4.4.0'
 end

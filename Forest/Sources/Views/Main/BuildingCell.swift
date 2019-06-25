@@ -2,21 +2,22 @@
 //  BuildingCell.swift
 //  Forest
 //
-//  Created by wookeon on 07/05/2019.
+//  Created by wookeon on 23/06/2019.
 //  Copyright © 2019 wookeon. All rights reserved.
 //
 
 import UIKit
 
 class BuildingCell: UICollectionViewCell {
-
-    @IBOutlet var buildingImg: UIImageView!
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var context: UILabel!
+    @IBOutlet weak var background: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        buildingImg.layer.cornerRadius = 12
-        buildingImg.layer.masksToBounds = true
+        background.layer.cornerRadius = 10
+        background.layer.masksToBounds = true
     }
-
 }
