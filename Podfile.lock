@@ -1,30 +1,30 @@
 PODS:
-  - Alamofire (4.8.0)
-  - AlamofireObjectMapper (5.2.0):
-    - Alamofire (~> 4.7)
-    - ObjectMapper (~> 3.4)
-  - Kingfisher (4.10.1)
-  - ObjectMapper (3.4.1)
+  - Alamofire (4.8.2)
+  - NVActivityIndicatorView (4.4.1):
+    - NVActivityIndicatorView/Presenter (= 4.4.1)
+  - NVActivityIndicatorView/Presenter (4.4.1)
+  - ScrollableDatepicker (2.2.0)
+  - SideMenu (5.0.3)
 
 DEPENDENCIES:
-  - Alamofire
-  - AlamofireObjectMapper
-  - Kingfisher
-  - ObjectMapper
+  - Alamofire (~> 4.8.2)
+  - NVActivityIndicatorView (~> 4.4.0)
+  - ScrollableDatepicker (~> 2.2)
+  - SideMenu
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - AlamofireObjectMapper
-    - Kingfisher
-    - ObjectMapper
+    - NVActivityIndicatorView
+    - ScrollableDatepicker
+    - SideMenu
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  NVActivityIndicatorView: f0a6b0ed2973d9544da268f4eb76696f0a9577b0
+  ScrollableDatepicker: 0f14e38bcd3517e6632220af11e47d29e0f982db
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
 
-PODFILE CHECKSUM: 2824156661e9416cec1de2391728dc04084a7629
+PODFILE CHECKSUM: 9123cc95cae63d2da63d40b7248cfb8d3aa79fd9
 
 COCOAPODS: 1.5.3
