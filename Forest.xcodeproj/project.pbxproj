@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,7 +40,6 @@
 		F5DB03802240979C004B4041 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DB037E2240979C004B4041 /* Login.storyboard */; };
 		F5DB03822240979D004B4041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5DB03812240979D004B4041 /* Assets.xcassets */; };
 		F5DB03852240979D004B4041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DB03832240979D004B4041 /* LaunchScreen.storyboard */; };
-		F5F25A3D229F568F004C18EC /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F25A3C229F568F004C18EC /* APIConstants.swift */; };
 		F5F25A41229F5C53004C18EC /* ResponseDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F25A40229F5C53004C18EC /* ResponseDefault.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +81,6 @@
 		F5DB03812240979D004B4041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5DB03842240979D004B4041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5DB03862240979D004B4041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5F25A3C229F568F004C18EC /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		F5F25A40229F5C53004C18EC /* ResponseDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDefault.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				F51FDFFA225C3A5D00E4DF5D /* NetworkResult.swift */,
-				F5F25A3C229F568F004C18EC /* APIConstants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -404,26 +401,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Forest/Pods-Forest-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/ScrollableDatepicker/ScrollableDatepicker.framework",
-				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Forest/Pods-Forest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableDatepicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Forest/Pods-Forest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Forest/Pods-Forest-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Forest/Pods-Forest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9270D01F8CFFD5103C8CE46 /* [CP] Check Pods Manifest.lock */ = {
@@ -477,7 +463,6 @@
 				F51FDFFF225C3D0200E4DF5D /* ResponseObject.swift in Sources */,
 				F5C0CBF722C15C270013B60E /* RentalStateList.swift in Sources */,
 				F5C0CC0022C1AD650013B60E /* StudentInfo.swift in Sources */,
-				F5F25A3D229F568F004C18EC /* APIConstants.swift in Sources */,
 				F5C350CD22BFE91F00D33709 /* ClassroomCell.swift in Sources */,
 				F5F25A41229F5C53004C18EC /* ResponseDefault.swift in Sources */,
 				F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */,
