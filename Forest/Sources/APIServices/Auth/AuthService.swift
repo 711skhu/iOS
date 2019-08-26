@@ -8,12 +8,14 @@
 
 import Alamofire
 
-struct AuthService {
+struct AuthService: APIManager {
     
     static let shared = AuthService()
     
     // App Auth API
     func appAuth(_ username: String, _ password: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        
+        let AppLoginURL = url("/student")
         
         let header: HTTPHeaders = [
             "Content-Type" : "application/json"
@@ -24,7 +26,7 @@ struct AuthService {
             "password": password
         ]
         
-        Alamofire.request(APIConstants.AppLoginURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
+        Alamofire.request(AppLoginURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
             .responseData { response in
                 
                 switch response.result {

@@ -17,6 +17,7 @@
 		F54B39BD22A176C700881BF4 /* RentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39BC22A176C700881BF4 /* RentalService.swift */; };
 		F54B39C622A277AD00881BF4 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39C522A277AD00881BF4 /* AuthVC.swift */; };
 		F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */; };
+		F5695C702312DEC500B9CD08 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5695C6F2312DEC500B9CD08 /* APIManager.swift */; };
 		F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DB228A7BB10037CA35 /* AuthService.swift */; };
 		F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */; };
 		F58628E0228A891F0037CA35 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DF228A891F0037CA35 /* Token.swift */; };
@@ -56,6 +57,7 @@
 		F54B39BC22A176C700881BF4 /* RentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalService.swift; sourceTree = "<group>"; };
 		F54B39C522A277AD00881BF4 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		F5695C6F2312DEC500B9CD08 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F58628DB228A7BB10037CA35 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		F58628DF228A891F0037CA35 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				F51FDFFA225C3A5D00E4DF5D /* NetworkResult.swift */,
+				F5695C6F2312DEC500B9CD08 /* APIManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				F5C350CA22BFD1D300D33709 /* RentalListCell.swift in Sources */,
 				F5CB51B6227852E9004764AC /* Building.swift in Sources */,
 				F54B39BA22A175A800881BF4 /* RentalDate.swift in Sources */,
+				F5695C702312DEC500B9CD08 /* APIManager.swift in Sources */,
 				F5C350C222BF62EB00D33709 /* BuildingCell.swift in Sources */,
 				F5C0CBF922C15F0E0013B60E /* Timetable.swift in Sources */,
 				F54B39B822A1755400881BF4 /* RentalList.swift in Sources */,
