@@ -18,7 +18,7 @@
 		F54B39C622A277AD00881BF4 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B39C522A277AD00881BF4 /* AuthVC.swift */; };
 		F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */; };
 		F5695C702312DEC500B9CD08 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5695C6F2312DEC500B9CD08 /* APIManager.swift */; };
-		F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DB228A7BB10037CA35 /* AuthService.swift */; };
+		F58628DC228A7BB10037CA35 /* AppAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DB228A7BB10037CA35 /* AppAuthService.swift */; };
 		F58628DE228A7E860037CA35 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */; };
 		F58628E0228A891F0037CA35 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58628DF228A891F0037CA35 /* Token.swift */; };
 		F5925C85224A02D600D30C32 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5925C84224A02D600D30C32 /* UIView+Extensions.swift */; };
@@ -42,6 +42,7 @@
 		F5DB03822240979D004B4041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5DB03812240979D004B4041 /* Assets.xcassets */; };
 		F5DB03852240979D004B4041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5DB03832240979D004B4041 /* LaunchScreen.storyboard */; };
 		F5F25A41229F5C53004C18EC /* ResponseDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F25A40229F5C53004C18EC /* ResponseDefault.swift */; };
+		F5FD7BAF23146CF6008C9490 /* ForestAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD7BAE23146CF6008C9490 /* ForestAuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +59,7 @@
 		F54B39C522A277AD00881BF4 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		F564E9F9225C8C6D00D41D29 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F5695C6F2312DEC500B9CD08 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		F58628DB228A7BB10037CA35 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F58628DB228A7BB10037CA35 /* AppAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthService.swift; sourceTree = "<group>"; };
 		F58628DD228A7E860037CA35 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		F58628DF228A891F0037CA35 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		F5925C84224A02D600D30C32 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		F5DB03842240979D004B4041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5DB03862240979D004B4041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5F25A40229F5C53004C18EC /* ResponseDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDefault.swift; sourceTree = "<group>"; };
+		F5FD7BAE23146CF6008C9490 /* ForestAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestAuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +126,12 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		F51FDFFC225C3CC600E4DF5D /* Auth */ = {
+		F51FDFFC225C3CC600E4DF5D /* App */ = {
 			isa = PBXGroup;
 			children = (
-				F58628DB228A7BB10037CA35 /* AuthService.swift */,
+				F58628DB228A7BB10037CA35 /* AppAuthService.swift */,
 			);
-			path = Auth;
+			path = App;
 			sourceTree = "<group>";
 		};
 		F51FDFFD225C3CEE00E4DF5D /* Common */ = {
@@ -254,7 +256,8 @@
 		F5925C832249FB1800D30C32 /* APIServices */ = {
 			isa = PBXGroup;
 			children = (
-				F51FDFFC225C3CC600E4DF5D /* Auth */,
+				F51FDFFC225C3CC600E4DF5D /* App */,
+				F5FD7BB023146CFF008C9490 /* Forest */,
 				F51FDFF2225C39D800E4DF5D /* Common */,
 				F54B39BB22A176C000881BF4 /* Rental */,
 			);
@@ -323,6 +326,14 @@
 			children = (
 				F5925C7C2249FABC00D30C32 /* Sources */,
 				F5925C7B2249FAB400D30C32 /* Resources */,
+			);
+			path = Forest;
+			sourceTree = "<group>";
+		};
+		F5FD7BB023146CFF008C9490 /* Forest */ = {
+			isa = PBXGroup;
+			children = (
+				F5FD7BAE23146CF6008C9490 /* ForestAuthService.swift */,
 			);
 			path = Forest;
 			sourceTree = "<group>";
@@ -462,9 +473,10 @@
 				F54B39B822A1755400881BF4 /* RentalList.swift in Sources */,
 				F564E9FA225C8C6D00D41D29 /* UIViewController+Extensions.swift in Sources */,
 				F5DB037B2240979C004B4041 /* AppDelegate.swift in Sources */,
-				F58628DC228A7BB10037CA35 /* AuthService.swift in Sources */,
+				F58628DC228A7BB10037CA35 /* AppAuthService.swift in Sources */,
 				F5C0CBFE22C191690013B60E /* RentalRequestVC.swift in Sources */,
 				F51FDFFF225C3D0200E4DF5D /* ResponseObject.swift in Sources */,
+				F5FD7BAF23146CF6008C9490 /* ForestAuthService.swift in Sources */,
 				F5C0CBF722C15C270013B60E /* RentalStateList.swift in Sources */,
 				F5C0CC0022C1AD650013B60E /* StudentInfo.swift in Sources */,
 				F5C350CD22BFE91F00D33709 /* ClassroomCell.swift in Sources */,
