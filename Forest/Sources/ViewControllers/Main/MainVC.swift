@@ -23,6 +23,10 @@ class MainVC: UIViewController {
         
         setBuildingData()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         rentalListTableView.rowHeight = UITableView.automaticDimension
         
         rentalListTableView.layer.cornerRadius = 10
@@ -37,36 +41,31 @@ class MainVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getStudentInfo()
-        getRentalList()
+        //getStudentInfo()
+        getMyRentalList()
     }
     
-    func getRentalList() {
-        RentalService.shared.getRentalList() {
+    func getMyRentalList() {
+        RentalService.shared.getMyRentalList() {
             [weak self]
-            (data) in
-            guard let `self` = self else { return }
+            (response, error) in
             
-            switch data {
-                
-            case .success(let result):
-                let _result = result as! [RentalList]
-                self.rentalList = _result
-                
+            guard let self = self else { return }
+            guard let response = response else { return }
+            
+            print(response.data)
+            
+            switch response.code {
+            case 200:
+                self.rentalList = response.data
                 self.rentalListTableView.reloadData()
-                
-            case .requestErr(let message):
-                print(message)
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                self.simpleAlert(title: "연결 실패", message: "네트워크 상태를 확인해주세요.")
+
+            default:
+                self.simpleAlert(title: "조회 실패", message: response.message)
             }
         }
     }
-    
+    /*
     func getStudentInfo() {        
         AuthService.shared.getStudentInfo() {
             [weak self]
@@ -91,6 +90,7 @@ class MainVC: UIViewController {
             }
         }
     }
+     */
     
     @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {
     
@@ -182,8 +182,8 @@ extension MainVC: UITableViewDataSource {
         cell.rentalDate.text = rental.rentalDate.rentalDate
         cell.rentalTime.text = "\(rental.rentalDate.startTime):00 ~ \(rental.rentalDate.endTime-1):59"
         
-        if rental.cancle ?? false {
-            cell.cancleBtn.isHidden = false
+        if let cancle = rental.cancle {
+            cell.cancleBtn.isHidden = cancle
         }
         
         return cell

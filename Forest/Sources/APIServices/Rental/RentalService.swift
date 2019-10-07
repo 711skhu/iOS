@@ -5,187 +5,127 @@
 //  Created by wookeon on 31/05/2019.
 //  Copyright © 2019 wookeon. All rights reserved.
 //
-
 import Alamofire
+import Foundation
 
-struct RentalService {
+struct RentalService: APIManager {
     
     static let shared = RentalService()
     
-    // Rental List API
-    func getRentalList(completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getMyRentalList(completion: @escaping (ResponseArray<RentalList>?, Error?) -> Void) {
         
-        let header: HTTPHeaders = [
-            "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "")" 
-        ]
-        
-        Alamofire.request(APIConstants.RentalListURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
-            .responseData { response in
+        let url = Self.setURL("/user/rentalList")
+            
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON {
+                response in
                 
                 switch response.result {
-                    
                 case .success:
-                    if let value = response.result.value {
-                        if let status = response.response?.statusCode {
-                            
-                            switch status {
-                            case 200:
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let result = try decoder.decode(ResponseArray<RentalList>.self, from: value)
-                                    
-                                    switch result.code {
-                                    case 200:
-                                        completion(.success(result.data!))
-                                    case 401:
-                                        completion(.requestErr(result.message!))
-                                    case 412:
-                                        completion(.requestErr(result.message!))
-                                    default:
-                                        completion(.pathErr)
-                                    }
-                                } catch {
-                                    completion(.pathErr)
-                                }
-                            case 400:
-                                completion(.pathErr)
-                            case 500:
-                                completion(.serverErr)
-                                
-                            default:
-                                break
-                            }
+                    if let data = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let result = try decoder.decode(ResponseArray<RentalList>.self, from: data)
+                            completion(result, nil)
+                        } catch (let error) {
+                            print("getMyRentalList(catch): \(error.localizedDescription)")
+                            completion(nil, error)
                         }
                     }
-                    break
-                    
-                case .failure(let err):
-                    print(err.localizedDescription)
-                    completion(.networkFail)
-                    break
+                case .failure(let e):
+                    print("getMyRentalList(failure): \(e.localizedDescription)")
+                    completion(nil, e)
                 }
         }
     }
     
-    // Classroom List API
-    func getClassroomList(buildingNumber: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    func deleteMyRentalList(_ idx: Int, completion: @escaping (ResponseDefault?, Error?) -> Void) {
         
-        let URL = APIConstants.BaseURL + "/buildings/\(buildingNumber)/classrooms"
+        let url = Self.setURL("/user/rental/\(idx)")
         
-        let header: HTTPHeaders = [
-            "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "")"
-        ]
-        
-        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
-            .responseData { response in
+        Alamofire.request(url, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON {
+                response in
                 
                 switch response.result {
-                    
                 case .success:
-                    if let value = response.result.value {
-                        if let status = response.response?.statusCode {
-                            
-                            switch status {
-                            case 200:
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let result = try decoder.decode(ResponseArray<Classroom>.self, from: value)
-                                    
-                                    switch result.code {
-                                    case 200:
-                                        completion(.success(result.data!))
-                                    case 401:
-                                        completion(.requestErr(result.message!))
-                                    case 412:
-                                        completion(.requestErr(result.message!))
-                                    default:
-                                        completion(.pathErr)
-                                    }
-                                } catch {
-                                    completion(.pathErr)
-                                }
-                            case 400:
-                                completion(.pathErr)
-                            case 500:
-                                completion(.serverErr)
-                                
-                            default:
-                                break
-                            }
+                    if let data = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let result = try decoder.decode(ResponseDefault.self, from: data)
+                            completion(result, nil)
+                        } catch (let error) {
+                            print("deleteMyRentalList(catch): \(error.localizedDescription)")
+                            completion(nil, error)
                         }
                     }
-                    break
-                    
-                case .failure(let err):
-                    print(err.localizedDescription)
-                    completion(.networkFail)
-                    break
+                case .failure(let e):
+                    print("deleteMyRentalList(failure): \(e.localizedDescription)")
+                    completion(nil, e)
                 }
         }
     }
     
-    // Rental State List API
-    func getRentalStateList(lectureCode: String, date: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getClassroomList(_ buildingNumber: Int, completion: @escaping (ResponseArray<Classroom>?, Error?) -> Void) {
         
-        let URL = APIConstants.BaseURL + "/classrooms/\(lectureCode)/\(date)/rentalList"
+        let url = Self.setURL("/buildings/\(buildingNumber)/classrooms")
         
-        let header: HTTPHeaders = [
-            "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "")"
-        ]
-        
-        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
-            .responseData { response in
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON {
+                response in
                 
                 switch response.result {
-                    
                 case .success:
-                    if let value = response.result.value {
-                        if let status = response.response?.statusCode {
-                            
-                            switch status {
-                            case 200:
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let result = try decoder.decode(ResponseArray<RentalStateList>.self, from: value)
-                                    
-                                    switch result.code {
-                                    case 200:
-                                        completion(.success(result.data!))
-                                    case 401:
-                                        completion(.requestErr(result.message!))
-                                    case 412:
-                                        completion(.requestErr(result.message!))
-                                    default:
-                                        completion(.pathErr)
-                                    }
-                                } catch {
-                                    completion(.pathErr)
-                                }
-                            case 400:
-                                completion(.pathErr)
-                            case 500:
-                                completion(.serverErr)
-                                
-                            default:
-                                break
-                            }
+                    if let data = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let result = try decoder.decode(ResponseArray<Classroom>.self, from: data)
+                            completion(result, nil)
+                        } catch (let error) {
+                            print("getClassroomList(catch): \(error.localizedDescription)")
+                            completion(nil, error)
                         }
                     }
-                    break
-                    
-                case .failure(let err):
-                    print(err.localizedDescription)
-                    completion(.networkFail)
-                    break
+                case .failure(let e):
+                    print("getClassroomList(failure): \(e.localizedDescription)")
+                    completion(nil, e)
                 }
         }
     }
     
-    // Rental State List API
-    func requestRental(startTime: String, endTime: String, reason: String, peopleList: String, phoneNumber: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getRentalStatus(_ lectureCode: String, _ date: String, completion: @escaping (ResponseArray<RentalStateList>?, Error?) -> Void) {
+        
+        let url = Self.setURL("/classrooms/\(lectureCode)/\(date)/rentalList")
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON {
+                response in
+                
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let result = try decoder.decode(ResponseArray<RentalStateList>.self, from: data)
+                            completion(result, nil)
+                        } catch (let error) {
+                            print("getClassroomList(catch): \(error.localizedDescription)")
+                            completion(nil, error)
+                        }
+                    }
+                case .failure(let e):
+                    print("getClassroomList(failure): \(e.localizedDescription)")
+                    completion(nil, e)
+                }
+        }
+    }
+    
+    func requestRental(_ startTime: String, _ endTime: String, _ reason: String, _ peopleList: String, _ phoneNumber: String, completion: @escaping (ResponseDefault?, Error?) -> Void) {
+        
+        let url = Self.setURL("/requestRental")
         
         let header: HTTPHeaders = [
-            "Authorization" : "Bearer \(UserDefaults.standard.string(forKey: "Token") ?? "")"
+            "Content-Type" : "application/json"
         ]
         
         let body: Parameters = [
@@ -196,50 +136,25 @@ struct RentalService {
             "phoneNumber": phoneNumber
         ]
         
-        Alamofire.request(APIConstants.RequestRentalURL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
-            .responseData { response in
+        Alamofire.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header)
+            .responseJSON {
+                response in
                 
                 switch response.result {
-                    
                 case .success:
-                    if let value = response.result.value {
-                        if let status = response.response?.statusCode {
-                            
-                            switch status {
-                            case 200:
-                                do {
-                                    let decoder = JSONDecoder()
-                                    let result = try decoder.decode(ResponseDefault.self, from: value)
-                                    
-                                    switch result.code {
-                                    case 200:
-                                        completion(.success(result.message!))
-                                    case 401:
-                                        completion(.requestErr(result.message!))
-                                    case 412:
-                                        completion(.requestErr(result.message!))
-                                    default:
-                                        completion(.pathErr)
-                                    }
-                                } catch {
-                                    completion(.pathErr)
-                                }
-                            case 400:
-                                completion(.pathErr)
-                            case 500:
-                                completion(.serverErr)
-                                
-                            default:
-                                break
-                            }
+                    if let data = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let result = try decoder.decode(ResponseDefault.self, from: data)
+                            completion(result, nil)
+                        } catch (let error) {
+                            print("getClassroomList(catch): \(error.localizedDescription)")
+                            completion(nil, error)
                         }
                     }
-                    break
-                    
-                case .failure(let err):
-                    print(err.localizedDescription)
-                    completion(.networkFail)
-                    break
+                case .failure(let e):
+                    print("getClassroomList(failure): \(e.localizedDescription)")
+                    completion(nil, e)
                 }
         }
     }

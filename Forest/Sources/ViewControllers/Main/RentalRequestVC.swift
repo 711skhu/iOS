@@ -62,6 +62,10 @@ class RentalRequestVC: UIViewController, NVActivityIndicatorViewable {
         setPicker()
         setToolbar()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         initGestureRecognizer()
     }
     
@@ -131,17 +135,17 @@ class RentalRequestVC: UIViewController, NVActivityIndicatorViewable {
         guard let phoneNumber = phoneTextField.text else { return }
         
         setActivityIndicator()
-
-        RentalService.shared.requestRental(startTime: startTime, endTime: endTime, reason: reason, peopleList: peopleList, phoneNumber: phoneNumber) {
+        
+        RentalService.shared.requestRental(startTime, endTime, reason, peopleList, phoneNumber) {
             [weak self]
-            (data) in
+            (response, error) in
             
-            guard let `self` = self else { return }
+            guard let self = self else { return }
+            guard let response = response else { return }
             
-            switch data {
-                
-            case .success(let message):
-                let alert = UIAlertController(title: "대여 성공", message: message as? String, preferredStyle: .alert)
+            switch response.code {
+            case 200:
+                let alert = UIAlertController(title: "대여 성공", message: response.message, preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "확인", style: .default) {
                     (action) in
@@ -151,15 +155,8 @@ class RentalRequestVC: UIViewController, NVActivityIndicatorViewable {
                 alert.addAction(defaultAction)
                 
                 self.present(alert, animated: false, completion: nil)
-                
-            case .requestErr(let message):
-                self.simpleAlert(title: "대여 실패", message: message as! String)
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                self.simpleAlert(title: "연결 실패", message: "네트워크 상태를 확인해주세요.")
+            default:
+                self.simpleAlert(title: "대여 실패", message: response.message)
             }
             
             self.removeActivityIndicator()
@@ -173,7 +170,7 @@ class RentalRequestVC: UIViewController, NVActivityIndicatorViewable {
             [weak self]
             (action) in
             
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
             self.requestRental()
         }

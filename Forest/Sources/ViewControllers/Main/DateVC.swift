@@ -59,6 +59,10 @@ class DateVC: UIViewController, NVActivityIndicatorViewable {
         timetableView.delegate = self
         timetableView.dataSource = self
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         DispatchQueue.main.async {
             self.showSelectedDate()
             self.datepicker.scrollToSelectedDate(animated: false)
@@ -103,36 +107,26 @@ class DateVC: UIViewController, NVActivityIndicatorViewable {
         guard let date = date else { return }
         
         setActivityIndicator()
-
-        RentalService.shared.getRentalStateList(lectureCode: lectureCode, date: date) {
+        
+        RentalService.shared.getRentalStatus(lectureCode, date) {
             [weak self]
-            (data) in
+            (response, error) in
             
-            guard let `self` = self else { return }
+            guard let self = self else { return }
+            guard let response = response else { return }
             
-            switch data {
-                
-            case .success(let result):
-                let _result = result as! [RentalStateList]
-                self.rentalStateList = _result
-                
-                print(self.rentalStateList)
-                
+            switch response.code {
+            case 200:
+                self.rentalStateList = response.data
                 self.setTimetable()
                 self.rentalBtn.isEnabled = true
                 self.rentalBtn.backgroundColor = UIColor(red: 3/255, green: 93/255, blue: 36/255, alpha: 1.0)
                 self.timetableView.reloadData()
                 
-            case .requestErr(let message):
-                print(message)
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                self.simpleAlert(title: "연결 실패", message: "네트워크 상태를 확인해주세요.")
+            default:
+                self.simpleAlert(title: "조회 실패", message: response.message)
             }
-            
+
             self.removeActivityIndicator()
         }
     }

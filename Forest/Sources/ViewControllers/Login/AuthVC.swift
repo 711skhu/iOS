@@ -41,6 +41,10 @@ class AuthVC: UIViewController, NVActivityIndicatorViewable {
         setViewBorder()
         setButtonShadow()
         
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
+        
         initGestureRecognizer()
     }
     
@@ -108,36 +112,28 @@ class AuthVC: UIViewController, NVActivityIndicatorViewable {
     @IBAction func authBtnAction(_ sender: Any) {
         
         guard let studentNumber = studentNumberTextField.text else { return }
-        guard let pw = pwTextField.text else { return }
+        guard let password = pwTextField.text else { return }
         
         setActivityIndicator()
         
         // 통신을 시도합니다.
-        AuthService.shared.forestAuth(studentNumber, pw) {
+        AuthService.shared.forestAuth(studentNumber, password) {
             [weak self]
-            (data) in
+            (response, error) in
             
-            guard let `self` = self else { return }
+            guard let self = self else { return }
+            guard let response = response else { return }
             
-            switch data {
+            switch response.code {
+            case 201:
+                UserDefaults.standard.set(studentNumber, forKey: "studentNumber")
+                UserDefaults.standard.set(password, forKey: "password")
                 
-            case .success(_):
-                UserDefaults.standard.set(studentNumber, forKey: "StudentNumber")
-                UserDefaults.standard.set(pw, forKey: "ForestPassword")
-                
-            
                 let dvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNC") as! UINavigationController
                 
                 self.present(dvc, animated: true)
-                
-            case .requestErr(let message):
-                self.simpleAlert(title: "로그인 실패", message: message as! String)
-            case .pathErr:
-                self.simpleAlert(title: "인증 실패", message: "잘못된 접근입니다.")
-            case .serverErr:
-                self.simpleAlert(title: "로그인 실패", message: "점검 중 입니다.")
-            case .networkFail:
-                self.simpleAlert(title: "로그인 실패", message: "네트워크 상태를 확인해주세요.")
+            default:
+                self.simpleAlert(title: "로그인 실패", message: response.message)
             }
             
             self.removeActivityIndicator()

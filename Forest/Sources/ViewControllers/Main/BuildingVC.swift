@@ -22,6 +22,10 @@ class BuildingVC: UIViewController, NVActivityIndicatorViewable {
         setNavigationBar()
         classroomCollectionView.dataSource = self
         classroomCollectionView.delegate = self
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,27 +45,22 @@ class BuildingVC: UIViewController, NVActivityIndicatorViewable {
         guard let buildingNumber = buildingNumber else { return }
         setActivityIndicator()
         
-        RentalService.shared.getClassroomList(buildingNumber: buildingNumber) {
+        RentalService.shared.getClassroomList(buildingNumber) {
             [weak self]
-            (data) in
+            (response, error) in
             
-            guard let `self` = self else { return }
+            guard let self = self else { return }
+            guard let response = response else { return }
             
-            switch data {
-                
-            case .success(let result):
-                let _result = result as! [Classroom]
-                self.classroomList = _result
+            print(response.data)
+            
+            switch response.code {
+            case 200:
+                self.classroomList = response.data
                 self.classroomCollectionView.reloadData()
                 
-            case .requestErr(let message):
-                print(message)
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                self.simpleAlert(title: "연결 실패", message: "네트워크 상태를 확인해주세요.")
+            default:
+                self.simpleAlert(title: "조회 실패", message: response.message)
             }
             
             self.removeActivityIndicator()

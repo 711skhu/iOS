@@ -7,7 +7,7 @@
 //
 
 struct ResponseDefault: Codable {
-    let code: Int?
-    let status: String?
-    let message: String?
+    let code: Int
+    let status: String
+    let message: String
 }

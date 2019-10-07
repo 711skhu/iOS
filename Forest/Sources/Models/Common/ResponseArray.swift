@@ -7,9 +7,8 @@
 //
 
 struct ResponseArray<T: Codable>: Codable {
-    
-    let code: Int?
-    let status: String?
-    let message: String?
-    let data: [T]?
+    let code: Int
+    let status: String
+    let message: String
+    let data: [T]
 }
